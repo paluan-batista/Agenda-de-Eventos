@@ -1,5 +1,6 @@
 package com.eventapp.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,62 +8,67 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "evento")
-public class Evento {
+public class Evento implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long codigo;
+    private static final long serialVersionUID = 1L;
 
-	private String nome;
-	private String local;
-	private String data;
-	private String horario;
-	
-	@OneToMany
-	private List<Convidado> convidados;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long codigo;
 
-	public long getCodigo() {
-		return codigo;
-	}
+    @NotEmpty
+    private String nome;
+    @NotEmpty
+    private String local;
+    @NotEmpty
+    private String data;
+    @NotEmpty
+    private String horario;
 
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
-	}
+    @OneToMany
+    private List<Convidado> convidados;
 
-	public String getNome() {
-		return nome;
-	}
+    public long getCodigo() {
+        return codigo;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
 
-	public String getLocal() {
-		return local;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setLocal(String local) {
-		this.local = local;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public String getData() {
-		return data;
-	}
+    public String getLocal() {
+        return local;
+    }
 
-	public void setData(String data) {
-		this.data = data;
-	}
+    public void setLocal(String local) {
+        this.local = local;
+    }
 
-	public String getHorario() {
-		return horario;
-	}
+    public String getData() {
+        return data;
+    }
 
-	public void setHorario(String horario) {
-		this.horario = horario;
-	}
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
 
 }
